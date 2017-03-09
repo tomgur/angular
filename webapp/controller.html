@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <h1 ng-click="changeName()">{{ firstName }}</h1>
+
+    <h1>{{ fullName() }}</h1>
+
+    <div ng-controller="namesCtrl">
+        <ul>
+            <li ng-repeat="x in names">
+                {{ x.name + ', ' + x.country}}
+            </li>
+        </ul>
+    </div>
+</div>
+
+<script src="js/myApp.js"></script>
+<script src="js/myCtrl.js"></script>
+</body>
+</html>

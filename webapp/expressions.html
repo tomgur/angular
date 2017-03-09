@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <p>First Name : <input style="background-color: {{myCol}}" type="text" ng-model="firstName"></p>
+    <p>Last Name : <input type="text" ng-model="lastName"></p>
+    <br>
+    Full Name: {{firstName + " " + lastName}}
+    <br>
+    Total in Dollars: {{ quantity * cost}}
+    <br>
+    Name from object: {{ person.christianName + ' ' + person.surname}}
+    <br>
+    The third result is {{ points[2] }}
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope) {
+        $scope.myCol = "lightBlue";
+        $scope.person={surname:'Gur',christianName:'Tom'};
+        $scope.quantity=5;
+        $scope.cost=5;
+        $scope.points=[1,2,3,4,5];
+    })
+</script>
+
+</body>
+</html>

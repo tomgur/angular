@@ -36,7 +36,7 @@ app.controller('namesCtrl', function ($scope) {
         {name: 'Gustav', country: 'Russia'},
         {name: 'Birgit', country: 'Ukraine'},
         {name: 'Mary', country: 'Portugal'},
-        {name: 'Kai', country: 'Thailand'}]
+        {name: 'Kai', country: 'Thailand'}];
 
     $scope.orderByMe = function (x) {
         $scope.myOrderBy = x;
@@ -47,10 +47,26 @@ app.controller('costCtrl', function ($scope) {
     $scope.price = 66;
 });
 
+app.controller('customersCtrl', function ($scope, $location, $http, $timeout, $interval) {
+    $scope.myUrl = $location.absUrl();
+    $http.get("myWelcome.html").then(function (response) {
+        $scope.myWelcome = response.data;
+    });
+
+    $scope.myHeader = "Hello World!";
+    $timeout(function () {
+        $scope.myHeader = "How are you today?";
+    }, 3000);
+    $scope.theTime = new Date().toLocaleTimeString();
+    $interval(function () {
+        $scope.theTime = new Date().toLocaleTimeString();
+    }, 1000);
+});
+
 // custom filter
 app.filter('myFormat', function () {
     return function (x) {
-        var i, c, txt = "";
+        var c, txt = "";
         for (var i = 0; i < x.length; i++) {
             c = x[i];
             if (i % 2 == 0) {
@@ -60,4 +76,4 @@ app.filter('myFormat', function () {
         }
         return txt;
     }
-})
+});

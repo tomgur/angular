@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+</head>
+
+<body>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+    <div ng-controller="namesCtrl">
+        <!-- orderBy -->
+        <ul>
+            <li ng-repeat="x in names | orderBy:'country'">
+                {{ x.name + ', ' + x.country }}
+            </li>
+        </ul>
+        <hr>
+        <!-- filter filter -->
+        <h3>Filtered by "i"</h3>
+        <ul>
+            <li ng-repeat="x in names | filter : 'i'">
+                {{ x }}
+            </li>
+        </ul>
+        <hr>
+        <!-- filter by model -->
+        <h3>Type text to filter by</h3>
+        <p><input type="text" ng-model="test"></p>
+        <ul>
+            <li ng-repeat="x in names | filter : test">
+                {{ x }}
+            </li>
+        </ul>
+        <hr>
+        <!-- sort an array based on user input -->
+        <h3>Click header to sort list</h3>
+        <table border="1" width="100">
+            <tr>
+                <th ng-click="orderByMe('name')">Name</th>
+                <th ng-click="orderByMe('country')">Country</th>
+            </tr>
+            <tr ng-repeat="x in names | orderBy:myOrderBy">
+                <td>{{ x.name }}</td>
+                <td>{{ x.country }}</td>
+            </tr>
+        </table>
+        <hr>
+        <ul>
+            <li ng-repeat="x in names">
+                {{ x.name | myFormat }}
+            </li>
+        </ul>
+    </div>
+
+
+    <div ng-controller="costCtrl">
+        <h1>Price: {{ price | currency}}</h1>
+    </div>
+</div>
+
+<script src="js/myApp.js"></script>
+<script src="js/myCtrl.js"></script>
+</body>
+</html>

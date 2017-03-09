@@ -27,5 +27,37 @@ app.controller('namesCtrl', function ($scope) {
     $scope.names = [
         {name: 'Jani', country: 'Norway'},
         {name: 'Hege', country: 'Japan'},
-        {name: 'Kai', country: 'Lapland'}];
+        {name: 'Kai', country: 'Lapland'},
+        {name: 'Jani', country: 'US'},
+        {name: 'Carl', country: 'Israel'},
+        {name: 'Margareth', country: 'Germany'},
+        {name: 'Hege', country: 'Netherlands'},
+        {name: 'Joe', country: 'Italy'},
+        {name: 'Gustav', country: 'Russia'},
+        {name: 'Birgit', country: 'Ukraine'},
+        {name: 'Mary', country: 'Portugal'},
+        {name: 'Kai', country: 'Thailand'}]
+
+    $scope.orderByMe = function (x) {
+        $scope.myOrderBy = x;
+    }
 });
+
+app.controller('costCtrl', function ($scope) {
+    $scope.price = 66;
+});
+
+// custom filter
+app.filter('myFormat', function () {
+    return function (x) {
+        var i, c, txt = "";
+        for (var i = 0; i < x.length; i++) {
+            c = x[i];
+            if (i % 2 == 0) {
+                c = c.toUpperCase();
+            }
+            txt += c;
+        }
+        return txt;
+    }
+})
